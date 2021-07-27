@@ -212,12 +212,12 @@
   /**
    * Events slider
    */
-  new Swiper('.events-slider', {
+  var swiper =new Swiper('.events-slider', {
     speed: 600,
     loop: true,
     autoplay: {
       delay: 5000,
-      disableOnInteraction: false
+      disableOnInteraction: true
     },
     slidesPerView: 'auto',
     pagination: {
@@ -226,6 +226,11 @@
       clickable: true
     }
   });
+  $(".swiper-container").hover(function() {
+    swiper.autoplay.stop();
+}, function() {
+    swiper.autoplay.start();
+});
 
   /**
    * Testimonials slider
@@ -276,3 +281,32 @@
   });
 
 })()
+
+/****Awards Animations*********/
+var controller = new ScrollMagic.Controller();
+var tl29 = new TimelineMax();
+var tl30 = new TimelineMax();
+var tl31 = new TimelineMax();
+tl29.from(["#award-1"],.2,{rotationY:150,opacity:0,ease:Power1.easeOut},0);
+tl30.from(["#award-2"],.2,{rotationY:150,opacity:0,ease:Power1.easeOut},0);
+tl31.from(["#award-3"],.2,{rotationY:150,opacity:0,ease:Power1.easeOut},0);
+var scene29 = new ScrollMagic.Scene({
+    triggerElement: "#award-1",
+    triggerHook: 0.8
+})
+.setTween(tl29)
+.addTo(controller);
+var scene30 = new ScrollMagic.Scene({
+    triggerElement: "#award-2",
+    triggerHook: 0.8
+})
+.setTween(tl30)
+.addTo(controller);
+var scene31 = new ScrollMagic.Scene({
+    triggerElement: "#award-3",
+    triggerHook: 0.8
+})
+.setTween(tl31)
+.addTo(controller);
+
+/****End of Awards Animations*********/
